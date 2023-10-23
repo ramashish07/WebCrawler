@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookWisher Search Engine</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SendX</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class "nav-link" href="#">Features</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container-fluid d-flex justify-content-center align-items-center"
+      style="margin-top: 100px"
+    >
+      <form class="d-flex" role="search" style="width: 50%" id="search-form">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          id="url"
+        />
+        <div class="form-check" style="margin-right: 10px">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="isPayingCustomer"
+            name="is_paying_customer"
+          />
+          <label class="form-check-label" for="isPayingCustomer">
+            Paid user
+          </label>
+        </div>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <div id="result"></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Capture form submission event
+      document
+        .getElementById("search-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          const url = document.getElementById("url").value; // Get URL value
+          const isPayingCustomer =
+            document.getElementById("isPayingCustomer").checked; // Get checkbox value
+          fetch("/crawl", {
+            method: "POST",
+            body: JSON.stringify({ url, isPayingCustomer }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.text())
+            .then((html) => {
+              // Handle the response (e.g., update the page with the crawled HTML)
+              // For simplicity, you can update a div with the response
+              document.getElementById("result").innerHTML = html;
+            })
+            .catch((error) => {
+              // Handle any errors (e.g., show an error message)
+              console.error("Error:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
