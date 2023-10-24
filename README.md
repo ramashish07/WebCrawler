@@ -15,7 +15,7 @@ I have implemented all the three parts Required,Good to have and Great to have.
 
 *Client:* HTML, Bootstrap
 
-*Server:* Golang,Colly  
+*Server:* Golang
 
 # Video Link 
 https://drive.google.com/file/d/1fXgcFetgS1qRIfWAaVs8wvgTo9s8lNbE/view?usp=sharing
