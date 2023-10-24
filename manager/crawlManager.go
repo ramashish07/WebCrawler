@@ -43,14 +43,13 @@ func CrawlPage(url string) (string, error) {
     return cachedHTML, err
 }
 
+var startTime = time.Now()
+var requestCounter = 0
 // Result not stored in disk, crawl in real time using colly
 func CrawlPageRealTime(url string) (string, error) {
 	
 	c := colly.NewCollector()
 	
-	
-	requestCounter := 0
-	startTime := time.Now()
 	
 	// Limit the number of workers
 	c.Limit(&colly.LimitRule{
@@ -64,7 +63,6 @@ func CrawlPageRealTime(url string) (string, error) {
 	})
 
 	c.OnHTML("html", func(e *colly.HTMLElement) {
-		
 		info=e.Text
 		requestCounter++
 	})
