@@ -3,7 +3,13 @@
 I have implemented all the three parts Required,Good to have and Great to have.
 
 ## Table of Contents 
-[Tech Stack](#tech-stack)
+- [Tech Stack](#tech-stack)
+- [Video Link](#video-link)
+- [API Endpoints](#api-endpoints)
+- [Model](#model)
+- [Overview](#overview)
+- [Folder Structure](#folder-structure)
+
 
 ## Tech Stack
 
