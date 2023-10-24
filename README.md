@@ -5,10 +5,11 @@ I have implemented all the three parts Required,Good to have and Great to have.
 ## Table of Contents 
 - [Tech Stack](#tech-stack)
 - [Video Link](#video-link)
-- [API Endpoints](#api-endpoints)
-- [Model](#model)
-- [Overview](#overview)
+- [Installation](#installation)
 - [Folder Structure](#folder-structure)
+- [API Endpoints](#api-endpoints)
+- [Models](#models)
+- [Overview](#overview)
 - [Features](#features)
 
 
@@ -20,7 +21,49 @@ I have implemented all the three parts Required,Good to have and Great to have.
 
 # Video Link 
 https://drive.google.com/file/d/1fXgcFetgS1qRIfWAaVs8wvgTo9s8lNbE/view?usp=sharing
+## Installation
 
+### Prerequisites
+1. Golang 
+2. HTML 
+
+To get started with the project, follow these steps:
+
+1. Clone the repository:
+   ```
+   https://github.com/ramashish07/sendx-backend-iec2020095.git
+   ```
+
+2. Navigate to the project directory and run:
+   ``` 
+   go run main.go
+   ```
+   Note: Make sure all the library and modules are imported
+  
+
+## Folder Structure 
+- The Folder Structure  follows MVC Architecture.
+```
+project-root/
+├── constant/
+    ├── constants.go
+├── controller/
+    ├── controller.go
+    ├── customController.go
+├── disk/
+├── helper/
+    ├── crawlHelper.go
+├── manager/
+    ├── crawlManager.go
+    ├── diskManager.go
+├── model/
+    ├── models.go
+├── router/
+    ├── router.go
+└── view/
+    ├── index.html/
+    
+```
 
 ## API Endpoints 
 
@@ -60,49 +103,71 @@ http
 2. Customer Crawl request
     
 `type CustomCrawlRequest struct {
-	NumWorkers string `json:"numWorkers"
-	Rate       string `json:"crawlRate"
+	NumWorkers string 
+	Rate string 
 }`
 
 3. Crawl Job
    
 `type CrawlJob struct {
-	URL      string
+	URL string
 	Priority int
 }`
 
 ##  Overview 
 
--  When the user crawl  particular URL  without setting custom paremeters  the  POST request goes into the server side.
+-  When the user crawl  particular URL  without setting custom parameters  the  POST request goes into the server side.
 
-- First the server checks the user is paid or non paid , if paid then it pushes the requested url into the paid  channel otherwise it pushes into the non paid channel.  Firstly the paid userls url will be crawled giving priority to paid users.
+- First the server checks the user is paid or non paid , if paid then it pushes the requested url into the paid  channel otherwise it pushes into the non paid channel.  Firstly the paid users url will be crawled giving priority to paid users.
 
 - The server first  checks in the disk that the URL to be  crawled is stored in the disk or not in the last 60 min.
 
 - If it is stored in the disk it returns the result from their otherwise it will do  real time crawling.
 
 - If the real time crawling fails , the server will again retry for real time crawling upto three times.
+  
+- Once the crawling has been done the response is stored in the server disk , and after 60 minute time it will be deleted from the disk.
 
 - For concurrent crawling , separate channels in golang had been made for paid and non paid users with workers assigned to them .
 
-- For custom crawling , adming can set the number of workers and crawling rate per per worker per hour with the api  /customcrawl .  
+- For custom crawling , admin can set the number of workers and crawling rate per per worker per hour with the api  /customcrawl .  
 
 - If the rate limit comes out to be more than the set value , the server will throw an error and inform that the rate limit  has been exceeded.
 
 
 
-## Folder Structure 
-- The Folder Structure  follwes MVC Architecture.
-![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/c7e6a9cf-4336-407f-af9f-c5e530775155)
 
 ## Features 
-- Priority given to the paid users in the first part because at first paid queue is crawled.
+- Priority given to the paid users in the first part because at first paid queue is crawled and also more workers assigned to them .
 - Persistent Cache Storage that is disk is used here in the server side ,for that os module is used .
-- Retry Mechanism is implemented if the page is not avilable at the time.
+  ![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/96d14697-07ee-477b-87a4-cc11dba3e4bb)
+
+- After a 60 min time after crawling had been done ,the response stored in the server disk will be deleted.
+- Therefore if the URL crawled data is not in the disk , it will do real time crawling
+![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/78b11f69-1051-48b4-8c07-cc287745a374)
+
+
+
+- Retry Mechanism is implemented if the page is not available at that time.
 - Crawled URL within a 60 min timeframe doesnot go for real time crawling instead their response are returned from disk.
+
+  ![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/966be37b-3c96-4bc1-bcea-d5925cc01235)
+
 - Workers assigned for paid workers and non paid workers which will concurrenly crawl URL for them ,more workers are assigned to paid workers.
 - Custom Crawling has beed implemented in which the admin can set the  parallelism and rate limit per worker per hour.
-- Error handled in each request and operation .
+![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/433b2959-974e-40ac-885b-a7afb186297d)
+
+- The server throws notification if the crawl limit has been exceeded
+ ![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/83f3982c-7c65-4de6-94cd-f45e9a377456)
+
+
+
+- Error handled in each request and operation.
+
+
+  
+
+
 
 
 
