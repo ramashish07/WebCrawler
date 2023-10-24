@@ -85,7 +85,8 @@ http
 
 ## Folder Structure 
 - The Folder Structure  follwes MVC Architecture.
-![image](https://github.com/ramashish07/chatgpt/assets/91429764/f06648f0-d6f8-4a4c-a013-61ad6f504199)
+![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/c7e6a9cf-4336-407f-af9f-c5e530775155)
+
 
 
 
