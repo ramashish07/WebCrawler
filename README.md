@@ -9,6 +9,7 @@ I have implemented all the three parts Required,Good to have and Great to have.
 - [Model](#model)
 - [Overview](#overview)
 - [Folder Structure](#folder-structure)
+- [Feature](#feature)
 
 
 ## Tech Stack
