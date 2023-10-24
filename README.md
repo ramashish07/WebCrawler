@@ -94,6 +94,15 @@ http
 - The Folder Structure  follwes MVC Architecture.
 ![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/c7e6a9cf-4336-407f-af9f-c5e530775155)
 
+## Features 
+- Priority given to the paid users in the first part because at first paid queue is crawled.
+- Persistent Cache Storage that is disk is used here in the server side ,for that os module is used .
+- Retry Mechanism is implemented if the page is not avilable at the time.
+- Crawled URL within a 60 min timeframe doesnot go for real time crawling instead their response are returned from disk.
+- Workers assigned for paid workers and non paid workers which will concurrenly crawl URL for them ,more workers are assigned to paid workers.
+- Custom Crawling has beed implemented in which the admin can set the  parallelism and rate limit per worker per hour.
+- Error handled in each request and operation .
+
 
 
 
