@@ -19,7 +19,7 @@ https://drive.google.com/file/d/1fXgcFetgS1qRIfWAaVs8wvgTo9s8lNbE/view?usp=shari
 #### Crawl an URL 
 
 http
-  POST /crawl  
+  POST:- /crawl  
 
 
 | Parameter | Type     | Description                |
@@ -30,7 +30,7 @@ http
 #### Custom Crawl an URL 
 
 http
-  POST  /customCrawl
+  POST :- /customCrawl
 
 
 | Parameter | Type     | Description                       |
