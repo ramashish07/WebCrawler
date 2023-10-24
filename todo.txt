@@ -1,6 +1,0 @@
-> Organize the code, add it in multiple files
-> Remove priority queue
-> Add retry mechanism
-> Add multiple workers
-> Add paid and non paid workers
-> Provide APIs for rate and no of workers

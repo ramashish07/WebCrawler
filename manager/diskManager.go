@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Function to store crawled content on disk
 func StoreInDisk(url string, content string) {
 	filePath := helper.UrlToFilename(url)
 	dirPath := helper.UrlToDirectoryName(url)
@@ -24,12 +25,14 @@ func StoreInDisk(url string, content string) {
 		fmt.Println("Error in storing data in the disc")
 	}
 
+	//Starting separate go-routine to delete the file after timeout
 	go DeleteFromDisc(url)
 }
 
+// Delete the file from disk
 func DeleteFromDisc(url string) {
 
-	sleepDuration := constant.EXPIRATION_TIMEOUT * int(time.Second)
+	sleepDuration := constant.EXPIRATION_TIMEOUT * int(time.Minute)
 	time.Sleep(time.Duration(sleepDuration))
 
 	err := os.RemoveAll(helper.UrlToDirectoryName(url))
@@ -38,12 +41,14 @@ func DeleteFromDisc(url string) {
 	}
 }
 
+// Check if the result is stored in disk
 func IsStoredInDisk(url string) bool {
 	filePath := helper.UrlToFilename(url)
 	_, err := os.Stat(filePath)
 	return err == nil
 }
 
+// Extract the result from the disk
 func GetStoredPage(url string) (string, error) {
 	filePath := helper.UrlToFilename(url)
 	data, err := os.ReadFile(filePath)

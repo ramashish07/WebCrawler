@@ -6,6 +6,8 @@ import (
 	"main/constant"
 )
 
+// Helper functions for hashing, finding directory and file paths
+
 func Sha256Hash(input string) string {
 	hasher := sha256.New()
 	hasher.Write([]byte(input))
