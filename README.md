@@ -24,7 +24,7 @@ http
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `URL to be crawled` | `string` | *Required*. Your API key
+| `URL to be crawled` | `string` | *Required*. Your URL key
  |  `Request type`  |  `bool`    | User is paid or not 
 
 #### Custom Crawl an URL 
