@@ -2,7 +2,8 @@
 
 I have implemented all the three parts Required,Good to have and Great to have.
 
-
+## Table of Contents 
+[Tech Stack](#tech-stack)
 
 ## Tech Stack
 
