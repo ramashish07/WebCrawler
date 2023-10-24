@@ -9,7 +9,9 @@ import (
 	"strconv"
 )
 
+// Custom/Admin API handler
 func CustomCrawlHandler(w http.ResponseWriter, r *http.Request) {
+	
 	var request model.CustomCrawlRequest
 	decoder := json.NewDecoder(r.Body)
 	if err := decoder.Decode(&request); err != nil {
