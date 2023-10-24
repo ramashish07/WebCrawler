@@ -163,6 +163,10 @@ http
 
 
 - Error handled in each request and operation.
+- Made a simple interface using html and bootstrap to make request from the user side and download crawled data in client local disk.
+
+  ![image](https://github.com/ramashish07/sendx-backend-iec2020095/assets/91429764/dd80b762-66f5-4d22-aa9f-79953edb29f0)
+
 
 
   
