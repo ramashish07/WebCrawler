@@ -1,12 +1,11 @@
 # WebCrawler
-
- Developed a high performance and robust web crawling service.
-• Prioritized paying customers, ensuring faster access to web content,
+- Developed a high performance and robust web crawling service.
+- Prioritized paying customers, ensuring faster access to web content,
 and assigned more workers to them, along with implementing a retry
 mechanism for improved performance.
-• Implemented concurrent multi-threaded crawling with up to 5 workers
+- Implemented concurrent multi-threaded crawling with up to 5 workers
 for paying customers and 2 for non-paying customers.
-• Developed RESTful APIs for administrators to dynamically control the
+- Developed RESTful APIs for administrators to dynamically control the
 crawl rate and to prevent crawl limit exceedance
 
 ## Table of Contents 
